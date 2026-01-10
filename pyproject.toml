@@ -1,0 +1,16 @@
+[project]
+name = "pathhint"
+version = "0.1.0"
+description = "A Python library for smart path type hint."
+readme = "README.md"
+authors = [
+    { name = "jiezhuzzz", email = "jiezzz@duck.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic>=2.12.5",
+]
+
+[build-system]
+requires = ["uv_build>=0.9.18,<0.10.0"]
+build-backend = "uv_build"
