@@ -1,0 +1,3 @@
+from pathlib import Path
+
+def __getattr__(name: str) -> type[Path]: ...
