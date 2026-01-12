@@ -47,16 +47,20 @@ def _path_exists(p: Path) -> Path:
     return p
 
 
+# Generic Paths
+ExistingPath = Annotated[Path, AfterValidator(_path_exists)]
+NewPath = NewPath
+
 # Dirs
 Dir = DirectoryPath
-type NewDir = NewPath
-type GitDir = Annotated[DirectoryPath, AfterValidator(_dir_contains(".git"))]
+NewDir = NewPath
+GitDir = Annotated[DirectoryPath, AfterValidator(_dir_contains(".git"))]
 
 # Files
-type File = FilePath
-type NewFile = NewPath
-type BinFile = Annotated[FilePath, AfterValidator(_bin_file)]
-type NewBinFile = NewPath
+File = FilePath
+NewFile = NewPath
+BinFile = Annotated[FilePath, AfterValidator(_bin_file)]
+NewBinFile = NewPath
 
 
 # Dynamically generated file types
