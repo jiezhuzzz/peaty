@@ -35,10 +35,18 @@ def _dir_contains(name: str) -> Callable[[DirectoryPath], DirectoryPath]:
     return _validator
 
 
+def _bin_file(p: Path) -> Path:
+    if not os.access(p, os.X_OK):
+        raise ValueError(f"File {p} is not executable")
+    return p
+
+
 type GitDir = Annotated[DirectoryPath, AfterValidator(_dir_contains(".git"))]
 type Dir = DirectoryPath
 type NewDir = NewPath
 type NewFile = NewPath
+type BinFile = Annotated[FilePath, AfterValidator(_bin_file)]
+type NewBinFile = NewPath
 
 
 def __getattr__(name: str):
